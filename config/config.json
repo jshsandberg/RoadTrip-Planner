@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Test123!",
-    "database": "blogger",
+    "password": "password",
+    "database": "statemap",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql"
