@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 const expbs = require("express-handlebars");
 
 
-app.engine("handlebars", expbs());
+app.engine("handlebars", expbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our models for syncing
