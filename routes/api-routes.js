@@ -24,7 +24,7 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for retrieving a single post
+  // Get route for retrieving notes and info
   app.get("/api/state/:abbr", function(req, res) {
      // 2. Add a join here to include the Author who wrote the Post
     db.Note.findOne({
