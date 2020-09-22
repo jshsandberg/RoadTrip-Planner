@@ -20,7 +20,7 @@ module.exports = function(app) {
       where: query,
       //include: [db.Author]
     }).then(function(response) {
-      res.json(response);
+      res.render("map", response);
     });
   });
 
@@ -34,20 +34,20 @@ module.exports = function(app) {
       //include: [db.Author]
     }).then(function(response) {
       console.log(response);
-      res.json(response);
+      res.render("map", response);
     });
   });
 
   // POST route for saving a state on sidebar
   app.post("/api/state/:abbr", function(req, res) {
     db.Note.create(req.body).then(function(response) {
-      res.json(response);
+      res.render("map", response);
     });
   });
   //POST route for saving a note
   app.post("/api/notes/:id", function(req, res) {
     db.Note.create(req.body).then(function(response) {
-      res.json(response);
+      res.render("map", response);
     });
   });
   // DELETE route for deleting states
@@ -57,7 +57,7 @@ module.exports = function(app) {
         id: req.params.abbr
       }
     }).then(function(response) {
-      res.json(response);
+      res.render("map", response);
     });
   });
 
@@ -68,7 +68,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(response) {
-      res.json(response);
+      res.render("map", response);
     });
   });
 
@@ -81,7 +81,7 @@ module.exports = function(app) {
           id: req.body.id
         }
       }).then(function(response) {
-      res.json(response);
+        res.render("map", response);
     });
   });
 };
