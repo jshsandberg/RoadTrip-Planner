@@ -26,6 +26,7 @@ $(document).ready(function() {
 
   // This function grabs posts from the database and updates the view
   function getPosts(states) {
+
     authorId = author || "";
     if (authorId) {
       authorId = "/?author_id=" + authorId;
