@@ -5,22 +5,37 @@
 // =============================================================
 // Requiring our models
 var db = require("../models");
+
+
+
 // Routes
 // =============================================================
 module.exports = function(app) {
   // GET route for getting all of the posts
-  app.get("/api/state", function(req, res) {
-    var query = {};
-    if (req.query.id) {
-      query.stateName = req.query.abbr;
-      query.stateId=req.query.id;
-    }
+
+  // app.get("/api/state", function(req, res) {
+  //   // findAll returns all entries for a table when used with no options
+  //   db.Note.findAll({}).then(function(dbNote) {
+  //     // We have access to the todos as an argument inside of the callback function
+  //     res.json(dbNote);
+  //   });
+  // });
+  app.get("/api/state/:abbr", function(req, res) {
+    req.params.abbr;
+    // var query = {};
+    // if (req.query.abbr) {
+    //   query.stateName = req.query.name;
+    //   query.stateId=req.query.abbr;
+    //}
     // 1. Add a join here to include all of the Authors to these posts
-    db.Note.findAll({
-      where: query,
+    db.State.findOne({
+      where:  {
+        abbr: req.params.abbr 
+      }
       //include: [db.Author]
     }).then(function(response) {
-      res.render("map", response);
+      console.log(response);
+      res.render("map", { response: response });
     });
   });
 

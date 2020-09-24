@@ -7,5 +7,7 @@ CREATE TABLE states (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(30),
   abbr VARCHAR(2),
+  createdAt DATE,
+  updatedAt DATE,
   PRIMARY KEY (id)
 );
