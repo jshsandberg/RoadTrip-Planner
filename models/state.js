@@ -1,15 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-    var Note = sequelize.define("Note", {
-      state: {
+    var State = sequelize.define("State", {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       
       },
-      content: {
+      abbr: {
         type: DataTypes.TEXT,
         allowNull: true
       }
     });
-    return Note;
+    return State;
   };
   

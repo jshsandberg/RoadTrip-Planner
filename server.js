@@ -12,11 +12,16 @@ app.set("view engine", "handlebars");
 const db = require("./models");
 
 // Sets up the Express app to handle data parsing
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use("/public", express.static('./public/'));
+app.get("/", function(req, res) {
+  res.render("map");
+});
 
 // Routes
 require("./routes/api-routes.js")(app);
