@@ -1,0 +1,17 @@
+<li>
+	{{!-- should be the abbr foreign key attached to the note --}}
+	{{abbr}}
+
+	{{!-- shows the note if there is one, else shows blank textarea to create content --}}
+	{{#if note content=null}}
+	<textarea name="note" id="{{this.id}}" cols="30" rows="10"></textarea>
+	{{else}}
+	<textarea name="note" id="{{this.id}}" cols="30" rows="10">{{content}}</textarea>
+	{{/if}}
+{{!-- this.id will be the ID of the note showing
+ to identify what to delete from the DB --}}
+	<button class="update" data-id="{{this.id}}">Save</button>
+
+{{!-- same as above --}}
+	<button class="delete-" data-id="{{this.id}}">Delete</button>
+</li>

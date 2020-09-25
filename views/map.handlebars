@@ -61,7 +61,10 @@
           Noted States
         </div>
         <ul class="list-group list-group-flush">
-         <li class="list-group-item"></li>
+          {{!-- should be getting data from the note table to populate this partial after a state has been clicked or the dropdown has been chosen --}}
+          {{#each note}}
+              {{> note-block}}
+          {{/each}}
         </ul>
       </div>
     </div>
@@ -70,13 +73,13 @@
 <section class="fluid-container">
   <div class="row">
     <div name="info" class="col">
-
-      <p>      {{ response }}
-</p>
-
+      <ul>
+        {{#each facts}}
+        {{/each}}
+      </ul>
     </div>
     <div name="notes" class="col">
-
+      <p>{{ response }}</p>
     </div>
   </div>
 </section>
