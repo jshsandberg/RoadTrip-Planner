@@ -40,18 +40,19 @@ module.exports = function(app) {
   });
 
   // Get route for retrieving notes and info
-  app.get("/api/state/:abbr", function(req, res) {
-     // 2. Add a join here to include the Author who wrote the Post
-    db.Note.findOne({
-      where: {
-        id: req.params.id
-      },
-      //include: [db.Author]
-    }).then(function(response) {
-      console.log(response);
-      res.render("map", response);
-    });
-  });
+  // app.get("/api/state/:abbr", function(req, res) {
+  //   req.params.abbr;
+  //    // 2. Add a join here to include the Author who wrote the Post
+  //   db.Note.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     },
+  //     //include: [db.Author]
+  //   }).then(function(response) {
+  //     console.log(response);
+  //     res.render("map", response);
+  //   });
+  // });
 
   // POST route for saving a state on sidebar
   app.post("/api/state/:abbr", function(req, res) {
