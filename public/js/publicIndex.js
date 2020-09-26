@@ -8,28 +8,24 @@ $(document).ready(function() {
 
     const id = this.id;
     console.log(id)
-    // const note = { note: answer };
-    // console.log(note)
-    $.ajax({url:"/api/state/" + id, 
-      type: "GET",
-    }).then(function() {
+    $.ajax(
+      { url:"/api/state/" + id, 
+        type: "GET",
+      }).then(function() {
       console.log("Note grabbed for ", id);
-
-
-
 
       location.reload();
     });
   });
 
 
-  // When you click the edit button, updates the saved note database
-  // $(".edit").on("click", function(event) {
+  // When you click the save button, updates the saved note database
+  // $(".update").on("click", function(event) {
   //   event.preventDefault();
 
-  //   const id = $(this).data("id");
+  //   const id = this.id
   //   const newContent = req.body.note;
-  //   const updatedNote = { note: newContent };
+  //   const updatedNote = { content: newContent };
 
   //   $.ajax("/api/note/update/" + id, {
   //     type: "PUT",
@@ -42,15 +38,15 @@ $(document).ready(function() {
 
   const state = document.getElementsByClassName("state");
 
-let findID = function() {
-    console.log(this.id);
-    this.style.display = "block";
-    event.preventDefault();
-};
+  let findID = function(event) {
+      console.log(this.id);
+      this.style.display = "block";
+      event.preventDefault();
+  };
 
-Array.from(state).forEach(function(state) {
-        state.addEventListener('click', findID);
-        
-    });
+  Array.from(state).forEach(function(state) {
+          state.addEventListener('click', findID);
+          
+      });
 
 })
