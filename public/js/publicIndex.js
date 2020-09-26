@@ -2,19 +2,18 @@ $(document).ready(function() {
   
   // When you click a state, gets the note data stored there if there is any
   $(".state").on("click", function(event) {
-    console.log('hello 1');
     event.preventDefault();
-    console.log("hello 2");
 
     const id = this.id;
-    console.log(id)
+    //console.log(id)
     $.ajax(
       { url:"/api/state/" + id, 
         type: "GET",
       }).then(function() {
-      console.log("Note grabbed for ", id);
-
-      location.reload();
+      //console.log("Note grabbed for ", id);
+      //$.ajax()
+      //AJAX NEED ANOTHER LOL
+      //location.reload();
     });
   });
 
