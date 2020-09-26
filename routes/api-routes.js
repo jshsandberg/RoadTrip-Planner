@@ -11,15 +11,19 @@ module.exports = function(app) {
         abbr: req.params.abbr 
       }
     }).then(function(response) {
-      console.log(response);
-      res.render("map", { response: response });
+      //console.log(response.name);
+      console.log(response[0]);
+      res.render("map", {response: response.name});
+      //console.log(response);
+      //location.reload();
     });
   });
 
   app.get("/api/notes", function(req, res) {
     db.Note.findAll({}).then(function(response) {
-      console.log(response);
-      res.render("map", { note: response });
+      //console.log(response);
+      //res.render("map", {content:response[0].content});
+      res.render("map", {note:response[0].state});
     });
   });
 
