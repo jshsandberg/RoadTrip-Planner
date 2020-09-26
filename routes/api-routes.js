@@ -53,7 +53,7 @@ module.exports = function(app) {
   });
   
   // PUT route for updating notes
-  app.put("/api/notes/:id", function(req, res) {
+  app.put("/api/notes/update/:id", function(req, res) {
     db.Note.update(req.body,
       {
         where: {
