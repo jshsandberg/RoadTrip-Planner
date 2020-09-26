@@ -19,21 +19,21 @@ $(document).ready(function() {
 
 
   // When you click the save button, updates the saved note database
-  // $(".update").on("click", function(event) {
-  //   event.preventDefault();
+  $(".update").on("click", function(event) {
+    event.preventDefault();
 
-  //   const id = this.id
-  //   const newContent = req.body.note;
-  //   const updatedNote = { content: newContent };
+    const id = this.id
+    const newContent = req.body.note;
+    const updatedNote = { content: newContent };
 
-  //   $.ajax("/api/note/update/" + id, {
-  //     type: "PUT",
-  //     data: updatedNote,
-  //   }).then(function() {
-  //     console.log(`Note ${id} has been updated.`);
-  //     location.reload();
-  //   });
-  // });
+    $.ajax("/api/note/update/" + id, {
+      type: "PUT",
+      data: updatedNote,
+    }).then(function() {
+      console.log(`Note ${id} has been updated.`);
+      location.reload();
+    });
+  });
 
   const state = document.getElementsByClassName("state");
 
