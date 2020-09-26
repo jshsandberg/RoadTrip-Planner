@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Note.associate = function(models) {
-      Note.belongsTo(modles.State, {
+      Note.belongsTo(models.State, {
         foreignKey: {
           allowNull: false
         }
