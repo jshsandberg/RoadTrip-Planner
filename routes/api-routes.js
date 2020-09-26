@@ -16,6 +16,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/notes", function(req, res) {
+    db.Note.findAll({}).then(function(response) {
+      console.log(response);
+      res.render("map", { note: response });
+    });
+  });
+
   // POST route for saving a state on sidebar
   app.post("/api/state/:abbr", function(req, res) {
     db.Note.create(req.body).then(function(response) {
