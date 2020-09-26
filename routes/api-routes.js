@@ -19,7 +19,7 @@ module.exports = function(app) {
   app.get("/api/notes", function(req, res) {
     db.Note.findAll({}).then(function(response) {
       console.log(response);
-      res.render("map", { response: response });
+      res.render("map", { note: response });
     });
   });
 
