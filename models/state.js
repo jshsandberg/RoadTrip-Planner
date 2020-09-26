@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
+
       },
       abbr: {
         type: DataTypes.TEXT,
