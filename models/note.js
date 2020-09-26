@@ -10,6 +10,15 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       }
     });
+
+    Note.associate = function(models) {
+      Note.belongsTo(modles.State, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
+    
     return Note;
   };
   
