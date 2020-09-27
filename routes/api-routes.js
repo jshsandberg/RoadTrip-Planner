@@ -30,8 +30,8 @@ module.exports = function(app) {
     }).then(function(response) {
       console.log(response);
       //res.render("map", {content:response[0].content});
-      //console.log(response[0]);
-      //res.render("map", {note:response[0].state});
+      console.log(response[0].content);
+      res.render("map", {note:response[0].content});
     });
   });
 
