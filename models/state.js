@@ -12,9 +12,9 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
 
-    State.associate = function(models) {
-      State.hasOne(models.Note);
-    }
+    // State.associate = function(models) {
+    //   State.hasOne(models.Note);
+    // }
     return State;
   };
   

@@ -7,22 +7,27 @@ module.exports = function(app) {
   app.get("/api/state/:abbr", function(req, res) {
     req.params.abbr;
     db.State.findOne({
+      
       where:  {
         abbr: req.params.abbr 
-      }
+      },
+      //include: [db.Note],
     }).then(function(response) {
-      //console.log(response.name);
-      console.log(response[0]);
+      console.log(response.name);
+      //console.log(response[0]);
       res.render("map", {response: response.name});
       //console.log(response);
       //location.reload();
     });
   });
 
-  app.get("/api/notes", function(req, res) {
-    db.Note.findAll({}).then(function(response) {
+  app.get("/api/notes/", function(req, res) {
+    db.Note.findAll({
+      //include: [db.State],
+    }).then(function(response) {
       //console.log(response);
       //res.render("map", {content:response[0].content});
+      console.log(response[0]);
       res.render("map", {note:response[0].state});
     });
   });
@@ -46,7 +51,8 @@ module.exports = function(app) {
    db.Note.destroy({
       where: {
         id: req.params.id
-      }
+      },
+      //include: [db.State],
     }).then(function(response) {
       res.render("map", response);
     });
@@ -58,7 +64,8 @@ module.exports = function(app) {
       {
         where: {
           id: req.body.id
-        }
+        },
+        //include: [db.State],
       }).then(function(response) {
         res.render("map", response);
     });
