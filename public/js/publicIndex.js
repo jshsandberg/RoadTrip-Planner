@@ -5,6 +5,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     const id = this.id;
+    const state = this.title
     //console.log(id)
     $.ajax(
       { url:"/api/state/" + id, 
@@ -15,6 +16,12 @@ $(document).ready(function() {
       //AJAX NEED ANOTHER LOL
       //location.reload();
     });
+    $.ajax(
+      { url:"/api/notes/" + state,
+        type: "GET",
+      }).then(function() {
+        //console.log(response)
+      });
   });
 
 
@@ -39,6 +46,7 @@ $(document).ready(function() {
 
   let findID = function(event) {
       console.log(this.id);
+      console.log(this)
       this.style.display = "block";
       event.preventDefault();
   };

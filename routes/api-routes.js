@@ -13,7 +13,7 @@ module.exports = function(app) {
       },
       //include: [db.Note],
     }).then(function(response) {
-      console.log(response.name);
+      //console.log(response.name);
       //console.log(response[0]);
       res.render("map", {response: response.name});
       //console.log(response);
@@ -21,14 +21,17 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/notes/", function(req, res) {
+  app.get("/api/notes/:state", function(req, res) {
     db.Note.findAll({
+      where: {
+        state: req.params.state
+      }
       //include: [db.State],
     }).then(function(response) {
-      //console.log(response);
+      console.log(response);
       //res.render("map", {content:response[0].content});
-      console.log(response[0]);
-      res.render("map", {note:response[0].state});
+      console.log(response[0].content);
+      res.render("map", {note:response[0].content});
     });
   });
 
