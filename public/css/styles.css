@@ -1,1 +1,10 @@
-
+.map-row {
+    width: 100%;
+}
+.header {
+    border-bottom: 2px solid black;
+}
+.bg-img {
+    width: 100%;
+    margin: 0;
+}
