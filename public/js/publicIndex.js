@@ -1,5 +1,6 @@
 $(document).ready(function() {
   
+
   function appendNoteCards(notes){
     $("#noteCards").html("")
     //gets some notes for the state, appends on page
@@ -8,11 +9,11 @@ $(document).ready(function() {
       <div class="card-body">
         <h5 class="card-title">${a.StateName}</h5>
         <p class="card-text">${a.content}</p>
-        <button id="${a.id}" class="delete">Delete</button>
+        <button id="${a.id}" class="deleted" type="submit">Delete</button>
       </div>
     </div>`)
     })
-  }
+  };
   // When you click a state, gets the note data stored there if there is any
   $(".state").on("click", function(event) {
     event.preventDefault();
@@ -27,40 +28,25 @@ $(document).ready(function() {
         appendNoteCards(data.Notes)
     });
     
-  $(".delete").on("click", function(event) {
-    event.preventDefault();
+  
+  });
+  $(document).on("click", ".deleted", function(event) {
+    //event.preventDefault();
+    console.log("Deletes");
     const id = this.id;
-    $.delete(`/api/notes/${id}`, function(result) {
+    console.log("this is an id:" + id)
+    $.ajax(
+      {
+        url:"/api/notes/"+id,
+        type:"DELETE",
+      }
+    ).then(function(result){
       console.log(result);
-    })
-  })
+      //appendNoteCards(result.Notes);
+    });
+    //location.reload();
 
-  //   $.ajax(
-  //     { url:"/api/notes/" + state,
-  //       type: "GET",
-  //     }).then(function() {
-  //       //console.log(response)
-  //     });
-  // });
-
-  })
-  // When you click the save button, updates the saved note database
-  // $(".update").on("click", function(event) {
-  //   event.preventDefault();
-
-  //   const id = this.id
-  //   const newContent = req.body.note;
-  //   const updatedNote = { content: newContent };
-
-  //   $.ajax("/api/note/update/" + id, {
-  //     type: "PUT",
-  //     data: updatedNote,
-  //   }).then(function() {
-  //     console.log(`Note ${id} has been updated.`);
-  //     location.reload();
-  //   });
-  // });
-
+  });
   const state = document.getElementsByClassName("state");
 
   let findID = function(event) {
@@ -79,7 +65,7 @@ $(document).ready(function() {
       $("#saveNote").click(()=> {
         console.log()
         $.post("/api/notes/"+$("#stateAbbrev").text(), {content: $("#noteInput").val().trim()})
-        $.get("/api/notes"+$("#stateAbbrev"))
+        //$.get("/api/notes"+$("#stateAbbrev"))
 
         
       })
