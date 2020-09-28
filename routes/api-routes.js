@@ -5,17 +5,16 @@ const db = require("../models");
 module.exports = function(app) {
 
   app.get("/api/state/:abbr", function(req, res) {
-    req.params.abbr;
     db.State.findOne({
-      
       where:  {
         abbr: req.params.abbr 
       },
-      //include: [db.Note],
-    }).then(function(response) {
+      include: [db.Note]
+    }).then(function({dataValues}) {
       //console.log(response.name);
       //console.log(response[0]);
-      res.render("map", {response: response.name});
+      const response = {...dataValues, Notes: dataValues.Notes.map(a=> a.dataValues)};
+      res.json(response)
       //console.log(response);
       //location.reload();
     });
@@ -43,8 +42,9 @@ module.exports = function(app) {
   });
 
   //POST route for saving a note
-  app.post("/api/notes/:id", function(req, res) {
-    db.Note.create(req.body).then(function(response) {
+  app.post("/api/notes/:id", function({params,body}, res) {
+    console.log(body, params.id)
+    db.Note.create({...body, state: params.id, StateName: params.id}).then(function(response) {
       res.render("map", response);
     });
   });
