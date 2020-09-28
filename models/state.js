@@ -4,16 +4,16 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
-
+        
       },
       abbr: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: true,
       }
     });
 
     State.associate = function(models) {
-      State.hasOne(models.Note);
+      State.hasMany(models.Note);
     }
     return State;
   };
