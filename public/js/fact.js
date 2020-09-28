@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 var facts = {
     "AL":{
         "1": "has been a battleground for European powers",
@@ -68,6 +70,11 @@ var facts = {
         "1": "Means Land of the Indians",
         "2": "Michael Jackson grew up in Gary, Indiana",
         "3": "First state to use electric street light",
+    },
+    "IA":{
+        "1": "Home of Alligators",
+        "2": "Roll Tide",
+        "3": "F",
     },
     "KS":{
         "1": "Named after Kansa Native Americans",
@@ -245,3 +252,38 @@ var facts = {
         "3": "Also known as the Cowboy State",
     },
 };
+
+const state = document.getElementsByClassName("state");
+
+let findID = function(event) {
+  $("#facts").html(" ")
+  const stateID = this.id;
+  console.log(stateID);
+  console.log(facts[stateID]);
+  let factsText1 = JSON.stringify(facts[stateID][1]);
+  let factsText2 = JSON.stringify(facts[stateID][2]);
+  let factsText3 = JSON.stringify(facts[stateID][3]);
+//   $("#facts").append(facts[stateID]);
+$("#facts").append(`<div class="card" style="width: 18rem;">
+<div class="card-body">
+  <p class="card-text">${factsText1}</p>
+  <p class="card-text">${factsText2}</p>
+  <p class="card-text">${factsText3}</p>
+</div>
+</div>`);
+  $("#stateAbbrev").text(this.title);
+
+
+    event.preventDefault();
+};
+
+
+Array.from(state).forEach(function(state) {
+        state.addEventListener('click', findID);
+        
+        
+    });
+
+
+
+})
