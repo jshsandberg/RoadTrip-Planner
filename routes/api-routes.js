@@ -4,10 +4,10 @@ const db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  app.get("/api/state/:abbr", function(req, res) {
+  app.get("/api/state/:name", function(req, res) {
     db.State.findOne({
       where:  {
-        abbr: req.params.abbr 
+        name: req.params.name 
       },
       include: [db.Note]
     }).then(function({dataValues}) {

@@ -2,7 +2,7 @@ $(function() {
   
 
   function appendNoteCards(notes){
-    $("#noteCards").html("")
+    $("#noteCards").html("");
     //gets some notes for the state, appends on page
     notes.forEach(a => {
       $("#noteCards").append(`<div class="card" style="width: 18rem;">
@@ -12,14 +12,14 @@ $(function() {
         <button id="${a.id}" class="deleted btn btn-danger" type="submit">Delete</button>
       </div>
     </div>`)
-    })
+    });
   };
   
   // When you click a state, gets the note data stored there if there is any
   $(".state").on("click", function(event) {
     event.preventDefault();
 
-    const id = this.id;
+    const id = this.alt;
 
     $.ajax(
       { url:"/api/state/" + id, 
@@ -28,9 +28,15 @@ $(function() {
         //console.log(data)
         appendNoteCards(data.Notes)
     });
-    
-  
   });
+
+  function getNotes(id) {
+    console.log("Entered getNotes");
+    $.get(`/api/state/${id}`, function(data) {
+      console.log(data);
+      appendNoteCards(data.Notes);
+    });
+  };
 
   $(document).on("click", ".deleted", function(event) {
     //event.preventDefault();
@@ -52,9 +58,18 @@ $(function() {
 
   $("#saveNote").click(()=> {
     console.log()
-    $.post("/api/notes/"+$("#stateAbbrev").text(), {content: $("#noteInput").val().trim()})
-    .then(createNoteArea)
+    const id = $("#stateAbbrev").text();
+    $.post("/api/notes/"+ id, {content: $("#noteInput").val().trim()})
+    .then(function() {
+      //console.log(id);
+      eraseText();
+      getNotes(id);
+    });
     //$.get("/api/notes"+$("#stateAbbrev"))
   });
 
+  // Clears the field when th enote is saved
+  function eraseText() {
+    $("#noteInput").val("");
+  };
 });
