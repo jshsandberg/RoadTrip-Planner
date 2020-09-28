@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const expbs = require("express-handlebars");
-const nodemailer = require('nodemailer'); 
+const nodemailer = require('nodemailer');
+require("dotenv").config();
 
 
 app.engine("handlebars", expbs({ defaultLayout: "main" }));
@@ -46,12 +47,12 @@ app.post('/send', (req, res) => {
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: process.env.NM_HOST,
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'planaroadtrip@gmail.com', // generated ethereal user
-        pass: 'planaroadtrip2020'  // generated ethereal password
+        user: process.env.NM_USER, // generated ethereal user
+        pass: process.env.NM_PWD  // generated ethereal password
     },
     tls:{
       rejectUnauthorized:false
