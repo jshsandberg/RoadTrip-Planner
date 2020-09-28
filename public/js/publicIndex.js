@@ -24,7 +24,7 @@ $(document).ready(function() {
       { url:"/api/state/" + id, 
         type: "GET",
       }).then(function(data) {
-        console.log(data)
+        //console.log(data)
         appendNoteCards(data.Notes)
     });
     
@@ -46,20 +46,21 @@ $(document).ready(function() {
     });
     //location.reload();
 
-  });
+
   const state = document.getElementsByClassName("state");
 
-  let findID = function(event) {
-      console.log(this.id);
-      $("#stateAbbrev").text(this.title)
-      this.style.display = "block";
-      event.preventDefault();
-  };
 
-  Array.from(state).forEach(function(state) {
-          state.addEventListener('click', findID);
+  // let findID = function(event) {
+  //     console.log(this.id);
+  //     $("#stateAbbrev").text(this.title)
+  //     this.style.display = "block";
+  //     event.preventDefault();
+  // };
+
+  // Array.from(state).forEach(function(state) {
+  //         state.addEventListener('click', findID);
           
-      });
+  //     });
 
 
       $("#saveNote").click(()=> {
@@ -69,4 +70,5 @@ $(document).ready(function() {
 
         
       })
-})
+
+    })
