@@ -61,7 +61,7 @@ app.post('/send', (req, res) => {
   // setup email data with unicode symbols
   let mailOptions = {
       from: '"Road Trip Planner" <planaroadtrip@gmail.com>', // sender address
-      to: 'ericfolenta@gmail.com, chopperx123@gmail.com', // list of receivers
+      to: 'mrjhnwso@sharklasers.com', // list of receivers
       subject: 'Road Trip Planner Contact Request', // Subject line
       text: 'Hello world!', // plain text body
       html: output // html body
@@ -75,7 +75,7 @@ app.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('contact', {msg:'Email has been sent'});
+      res.render('contact', {msg:'Your email has been sent! Someone from RoadTrip Planners will respond soon.'});
   });
   });
 
