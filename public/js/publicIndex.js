@@ -1,5 +1,6 @@
 $(document).ready(function() {
   
+
   function appendNoteCards(notes){
     $("#noteCards").html("")
     //gets some notes for the state, appends on page
@@ -8,56 +9,46 @@ $(document).ready(function() {
       <div class="card-body">
         <h5 class="card-title">${a.StateName}</h5>
         <p class="card-text">${a.content}</p>
+        <button id="${a.id}" class="deleted" type="submit">Delete</button>
       </div>
     </div>`)
     })
-  }
+  };
   // When you click a state, gets the note data stored there if there is any
   $(".state").on("click", function(event) {
     event.preventDefault();
 
     const id = this.id;
-    const state = this.title
-    //console.log(id)
+
     $.ajax(
       { url:"/api/state/" + id, 
         type: "GET",
       }).then(function(data) {
         //console.log(data)
         appendNoteCards(data.Notes)
-        
-      //console.log("Note grabbed for ", id);
-      //$.ajax()
-      //AJAX NEED ANOTHER LOL
-      //location.reload();
     });
-  //   $.ajax(
-  //     { url:"/api/notes/" + state,
-  //       type: "GET",
-  //     }).then(function() {
-  //       //console.log(response)
-  //     });
-  // });
+    
+  
+  });
+  $(document).on("click", ".deleted", function(event) {
+    //event.preventDefault();
+    console.log("Deletes");
+    const id = this.id;
+    console.log("this is an id:" + id)
+    $.ajax(
+      {
+        url:"/api/notes/"+id,
+        type:"DELETE",
+      }
+    ).then(function(result){
+      console.log(result);
+      //appendNoteCards(result.Notes);
+    });
+    //location.reload();
 
-  })
-  // When you click the save button, updates the saved note database
-  // $(".update").on("click", function(event) {
-  //   event.preventDefault();
 
-  //   const id = this.id
-  //   const newContent = req.body.note;
-  //   const updatedNote = { content: newContent };
+  const state = document.getElementsByClassName("state");
 
-  //   $.ajax("/api/note/update/" + id, {
-  //     type: "PUT",
-  //     data: updatedNote,
-  //   }).then(function() {
-  //     console.log(`Note ${id} has been updated.`);
-  //     location.reload();
-  //   });
-  // });
-
-  // const state = document.getElementsByClassName("state");
 
   // let findID = function(event) {
   //     console.log(this.id);
@@ -75,7 +66,7 @@ $(document).ready(function() {
       $("#saveNote").click(()=> {
         console.log()
         $.post("/api/notes/"+$("#stateAbbrev").text(), {content: $("#noteInput").val().trim()})
-        $.get("/api/notes"+$("#stateAbbrev"))
+        //$.get("/api/notes"+$("#stateAbbrev"))
 
         
       })
