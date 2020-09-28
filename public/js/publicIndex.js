@@ -8,6 +8,7 @@ $(document).ready(function() {
       <div class="card-body">
         <h5 class="card-title">${a.StateName}</h5>
         <p class="card-text">${a.content}</p>
+        <button id="${a.id}" class="delete">Delete</button>
       </div>
     </div>`)
     })
@@ -17,22 +18,23 @@ $(document).ready(function() {
     event.preventDefault();
 
     const id = this.id;
-    const state = this.title
-    //console.log(id)
+
     $.ajax(
       { url:"/api/state/" + id, 
         type: "GET",
       }).then(function(data) {
         console.log(data)
         appendNoteCards(data.Notes)
-        
-      //console.log("Note grabbed for ", id);
-      //$.ajax()
-      //AJAX NEED ANOTHER LOL
-      //location.reload();
     });
-
     
+  $(".delete").on("click", function(event) {
+    event.preventDefault();
+    const id = this.id;
+    $.delete(`/api/notes/${id}`, function(result) {
+      console.log(result);
+    })
+  })
+
   //   $.ajax(
   //     { url:"/api/notes/" + state,
   //       type: "GET",
