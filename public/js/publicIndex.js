@@ -31,6 +31,8 @@ $(document).ready(function() {
       //AJAX NEED ANOTHER LOL
       //location.reload();
     });
+
+    
   //   $.ajax(
   //     { url:"/api/notes/" + state,
   //       type: "GET",
