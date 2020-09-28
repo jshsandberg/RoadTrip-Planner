@@ -4,21 +4,36 @@
     }
     .card {
         position: absolute;
-        top: 40%;
+        top: 50px;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, 0%);
         width: 80%;
-        max-width: 750px;
+        max-width: 800px;
+    }
+    .submit {
+        margin-top: 15px;
+        width: 100%;
+        background: green;
+    }
+    #response {
+        font-weight: bold;
+        color: green;
+    }
+    .form-row {
+        padding: 10px 0;
     }
 </style>
 
 <div class="row">
     <img src="../public/images/pexels-brian-de-karma-1687122.jpg" class="bg-img" />
 <div class="card">
-    <h5 class="card-header">Email Us</h5>
+    <h5 class="card-header">We Want to Hear From You!</h5>
     <div class="card-body">
+        <p><strong>Have a question? Want a new feature?</strong></p>
+        <p>RoadTrip Planner is constantly evolving. We love hearing feedback. Our team is standing by to answer your questions and respond to your comments. Don't be shy. We want to make the best dang RoadTrip Planner our there! Plus we don't want to leave your bored in North Dakota.</p>
+        <hr>
         <div class="contact">
-        {{msg}}
+            <span id="response">{{msg}}</span>
             <form method="POST" action="send">
                 <div class="form-row">
                     <div class="col">
@@ -29,11 +44,11 @@
                         <label>Email</label>
                         <input type="email" class="form-control" name="email" placeholder="Your email address...">
                     </div>
-                </div> 
+                </div>
                 <div class="form-row">
                     <label>Message</label>
                     <textarea name="message" class="form-control" rows="5" placeholder="Your message here..."></textarea>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary submit">Submit</button>
                 </div>
             </form>
         </div>
