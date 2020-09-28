@@ -77,13 +77,7 @@ app.post('/send', (req, res) => {
 
       res.render('contact', {msg:'Your email has been sent! Someone from RoadTrip Planners will respond soon.'});
   });
-  });
-
-
-
-
-
-
+});
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

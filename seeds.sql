@@ -26,7 +26,7 @@ VALUES
 ("Michigan", "MI"),
 ("Minnesota", "MN"),
 ("Mississippi", "MS"),
-("Missouri". "MO"),
+("Missouri", "MO"),
 ("Montana", "MT"),
 ("Nebraska", "NE"),
 ("Nevada", "NV"),
