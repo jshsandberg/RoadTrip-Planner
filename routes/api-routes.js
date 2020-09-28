@@ -37,7 +37,7 @@ module.exports = function(app) {
   // POST route for saving a state on sidebar
   app.post("/api/state/:abbr", function(req, res) {
     db.Note.create(req.body).then(function(response) {
-      res.json("map", response);
+      res.json(response);
     });
   });
 
@@ -58,7 +58,7 @@ module.exports = function(app) {
     },
     include:[db.State],
   }).then(function(response) {
-      console.log(response);
+      console.log("Deleting the note");
       res.json(response);
       res.status(204);
     });
@@ -73,7 +73,7 @@ module.exports = function(app) {
         },
         //include: [db.State],
       }).then(function(response) {
-        res.json("map", response);
+        console.log("This has putted a note")
     });
   });
 };
