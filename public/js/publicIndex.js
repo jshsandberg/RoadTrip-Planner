@@ -9,7 +9,7 @@ $(function() {
       <div class="card-body">
         <h5 class="card-title">${a.StateName}</h5>
         <p class="card-text">${a.content}</p>
-        <button id="${a.id}" class="deleted btn btn-danger" type="submit">Delete</button>
+        <button id="${a.id}" name="${a.StateName}" class="delete btn btn-danger" type="submit">Delete</button>
       </div>
     </div>`)
     });
@@ -33,26 +33,26 @@ $(function() {
   function getNotes(id) {
     console.log("Entered getNotes");
     $.get(`/api/state/${id}`, function(data) {
-      console.log(data);
+      // console.log(data);
       appendNoteCards(data.Notes);
     });
   };
 
-  $(document).on("click", ".deleted", function(event) {
-    //event.preventDefault();
-    console.log("Deletes");
+  $(document).on("click", ".delete", function(event) {
+    event.preventDefault();
     const id = this.id;
-    console.log("this is an id:" + id)
+    const data = this.name;
+
     $.ajax(
       {
         url:"/api/notes/"+id,
         type:"DELETE",
       }
     ).then(function(result){
-      console.log(result);
-      //appendNoteCards(result.Notes);
+      // console.log(data);
+      getNotes(data);
     });
-    //location.reload();
+
   });
 
 
@@ -65,7 +65,6 @@ $(function() {
       eraseText();
       getNotes(id);
     });
-    //$.get("/api/notes"+$("#stateAbbrev"))
   });
 
   // Clears the field when th enote is saved
