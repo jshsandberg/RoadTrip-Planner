@@ -265,13 +265,13 @@ $(function() {
     let factsText2 = JSON.stringify(facts[stateID][2]);
     let factsText3 = JSON.stringify(facts[stateID][3]);
     //   $("#facts").append(facts[stateID]);
-    $("#facts").append(`<div class="card" style="width: 18rem;">
-    <div class="card-body">
+    $("#facts").append(`
     <p class="card-text">${factsText1}</p>
+    <hr>
     <p class="card-text">${factsText2}</p>
+    <hr>
     <p class="card-text">${factsText3}</p>
-    </div>
-    </div>`);
+    `);
     $("#stateAbbrev").text(this.title);
     };
 
