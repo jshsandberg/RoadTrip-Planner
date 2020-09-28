@@ -5,12 +5,13 @@ $(function() {
     $("#noteCards").html("");
     //gets some notes for the state, appends on page
     notes.forEach(a => {
-      $("#noteCards").append(`<div class="card" style="width: 18rem;">
+      $("#noteCards").append(`<div class="" style="width: 100%;">
       <div class="card-body">
         <h5 class="card-title">${a.StateName}</h5>
         <p class="card-text">${a.content}</p>
         <button id="${a.id}" class="deleted btn btn-danger" type="submit">Delete</button>
       </div>
+      <hr>
     </div>`)
     });
   };
