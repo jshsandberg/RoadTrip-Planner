@@ -37,7 +37,7 @@ module.exports = function(app) {
   // POST route for saving a state on sidebar
   app.post("/api/state/:abbr", function(req, res) {
     db.Note.create(req.body).then(function(response) {
-      res.render("map", response);
+      res.json("map", response);
     });
   });
 
@@ -45,19 +45,22 @@ module.exports = function(app) {
   app.post("/api/notes/:id", function({params,body}, res) {
     console.log(body, params.id)
     db.Note.create({...body, state: params.id, StateName: params.id}).then(function(response) {
-      res.render("map", response);
+      res.json(response);
     });
   });
 
   // DELETE route for deleting notes
   app.delete("/api/notes/:id", function(req, res) {
-   db.Note.destroy({
-      where: {
-        id: req.params.id
-      },
-      //include: [db.State],
-    }).then(function(response) {
-      res.render("map", response);
+   db.Note.destroy(
+    {
+    where: {
+      id: req.params.id,
+    },
+    include:[db.State],
+  }).then(function(response) {
+      console.log(response);
+      res.json(response);
+      res.status(204);
     });
   });
   
@@ -70,7 +73,7 @@ module.exports = function(app) {
         },
         //include: [db.State],
       }).then(function(response) {
-        res.render("map", response);
+        res.json("map", response);
     });
   });
 };
