@@ -51,9 +51,8 @@ $(function() {
     ).then(function(result){
       // console.log(data);
       getNotes(data);
-      //appendNoteCards(result.Notes);
     });
-    //location.reload();
+
   });
 
 
@@ -66,7 +65,6 @@ $(function() {
       eraseText();
       getNotes(id);
     });
-    //$.get("/api/notes"+$("#stateAbbrev"))
   });
 
   // Clears the field when th enote is saved
