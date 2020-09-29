@@ -20,23 +20,10 @@ app.use(express.json());
 
 // Static directory
 // app.use(express.static("public"));
-// app.use("/public", express.static('./public/'));
+app.use("/public", express.static('./public/'));
 app.get("/", function(req, res) {
   res.render("map");
 });
-
-
-// define the folder that will be used for static assets
-app.use(Express.static(path.join(__dirname, '../public')));
-// handle every other route with index.html, which will contain
-// a script tag to your application's JavaScript file(s).
-app.get('*', function (request, response){
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'));
-});
-
-
-
-
 
 app.get("/contacts", function(req, res) {
   res.render("contact");
