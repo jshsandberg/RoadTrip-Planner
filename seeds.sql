@@ -1,4 +1,6 @@
-INSERT INTO states (name, abbr)
+USE statemap;
+
+INSERT INTO States (name, abbr)
 VALUES
 ("Alabama", "AL"),
 ("Alaska", "AK"),

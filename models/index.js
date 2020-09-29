@@ -9,11 +9,11 @@ const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
 let sequelize;
-if (process.env.DATABASE_URL) {
-  // the application is executed on Heroku ... use the postgres database
-  sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect:  'postgres',
-    protocol: 'postgres'
+if (process.env.JAWSDB_URL) {
+  // the application is executed on Heroku ... use the Jaws database
+  sequelize = new Sequelize(process.env.JAWSDB_URL, {
+    dialect:  "mysql",
+    protocol: "mysql"
   })
 }
 
