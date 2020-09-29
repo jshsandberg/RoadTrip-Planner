@@ -1,26 +1,9 @@
 const express = require("express");
 const app = express();
-const PORT = app.listen(process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000;
 const expbs = require("express-handlebars");
 const nodemailer = require('nodemailer');
-const mysql = require('mysql');
 require("dotenv").config();
-
-var connection;
-
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL)
-} else {
-  connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Test123!',
-    database: 'statemap'
-  });
-};
-
-connection.connect();
-module.exports = connection;
 
 app.engine("handlebars", expbs({ defaultLayout: "main" }));
 app.set("port", PORT);
@@ -35,27 +18,19 @@ const db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.JAWSDB_URL) {
-
-}
-
 // Static directory
 // app.use(express.static("public"));
 app.use("/public", express.static('./public/'));
+
+// Routes
+require("./routes/api-routes.js")(app);
+
 app.get("/", function(req, res) {
   res.render("map");
 });
 
 app.get("/contacts", function(req, res) {
   res.render("contact");
-});
-
-// Routes
-require("./routes/api-routes.js")(app);
-
-
-app.get('/contact', (req, res) => {
-  res.render('contact');
 });
 
 app.post('/send', (req, res) => {
