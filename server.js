@@ -67,7 +67,7 @@ app.post('/send', (req, res) => {
   // setup email data with unicode symbols
   let mailOptions = {
       from: '"Road Trip Planner" <planaroadtrip@gmail.com>', // sender address
-      to: 'mrjhnwso@sharklasers.com', // list of receivers
+      to: 'ericfolenta@gmail.com', // list of receivers
       subject: 'Road Trip Planner Contact Request', // Subject line
       text: 'Hello world!', // plain text body
       html: output // html body
