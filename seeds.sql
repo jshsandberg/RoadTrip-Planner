@@ -1,5 +1,3 @@
-USE statemap;
-
 INSERT INTO states (name, abbr)
 VALUES
 ("Alabama", "AL"),
