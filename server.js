@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = app.listen(rocess.env.PORT || 3000);
 const expbs = require("express-handlebars");
 const nodemailer = require('nodemailer');
 require("dotenv").config();
 
 
 app.engine("handlebars", expbs({ defaultLayout: "main" }));
+app.set("port", PORT);
 app.set("view engine", "handlebars");
 
 // Requiring our models for syncing
