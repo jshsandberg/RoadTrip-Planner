@@ -6,6 +6,21 @@ const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 require("dotenv").config();
 
+var connection;
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Test123!',
+    database: 'statemap'
+  });
+};
+
+connection.connect();
+module.exports = connection;
 
 app.engine("handlebars", expbs({ defaultLayout: "main" }));
 app.set("port", PORT);
