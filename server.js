@@ -29,7 +29,7 @@ app.get("/", function(req, res) {
   res.render("map");
 });
 
-app.get("/contacts", function(req, res) {
+app.get("/contact", function(req, res) {
   res.render("contact");
 });
 
