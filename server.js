@@ -25,6 +25,10 @@ app.get("/", function(req, res) {
   res.render("map");
 });
 
+app.get("/contacts", function(req, res) {
+  res.render("contact");
+});
+
 // Routes
 require("./routes/api-routes.js")(app);
 
