@@ -12,10 +12,10 @@ if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
   connection = mysql.createConnection({
-    host: 'sm9j2j5q6c8bpgyq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    user: 'tcguw1esy3ib5cj5',
-    password: 'iy5a1y8zid67fh7g',
-    database: 's4drz9bihc3ykmcp'
+    host: 'localhost',
+    user: 'root',
+    password: 'Test123!',
+    database: 'statemap'
   });
 };
 
@@ -34,6 +34,10 @@ const db = require("./models");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+if (process.env.JAWSDB_URL) {
+
+}
 
 // Static directory
 // app.use(express.static("public"));
