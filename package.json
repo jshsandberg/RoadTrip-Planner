@@ -19,9 +19,9 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.4.11",
+    "pg": "^8.3.3",
     "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0",
-    "pg": "^8.3.3"
+    "sequelize-cli": "^6.2.0"
   },
   "engines": {
     "node": "^12.18.4",
