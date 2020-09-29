@@ -3,6 +3,7 @@ const app = express();
 const PORT = app.listen(process.env.PORT || 3000);
 const expbs = require("express-handlebars");
 const nodemailer = require('nodemailer');
+const mysql = require('mysql');
 require("dotenv").config();
 
 
