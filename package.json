@@ -1,5 +1,5 @@
 {
-  "name": "post-author-joins",
+  "name": "roadtrip-planner",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,7 +9,7 @@
     "watch": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Spencer Smith, Eric Folenta, Crystal Han, Josh Sandburg",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -19,6 +19,12 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.4.11",
-    "sequelize": "^6.3.5"
+    "pg": "^8.3.3",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "engines": {
+    "node": "^12.18.4",
+    "npm": "^6.14.6"
   }
 }

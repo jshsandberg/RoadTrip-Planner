@@ -24,14 +24,6 @@ module.exports = {
     }
   },
   "production": {
-    "username": process.env.DB_USER,
-    "password": process.env.DB_PWD,
-    "database": process.env.DB_DATABASE,
-    "host": process.env.DB_HOST,
-    "port": 3306,
-    "dialect": "mysql",
-    "define": {
-      "timestamps": false
-    }
+    "use_env_variable": "JAWSDB_URL"
   }
 }
