@@ -21,6 +21,10 @@ As a User:
 
 -> Create a note about state selected
 
+## Deployed Link
+
+https://roadtrip-planner-app.herokuapp.com/
+
 
 ## Technology
 
